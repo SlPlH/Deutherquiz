@@ -1,0 +1,797 @@
+{
+  "meta": {
+    "language": "de",
+    "version": "1.0",
+    "level": "B1",
+    "source": "MEB Almanca Öğretim Programı 2018"
+  },
+  "categories": [
+    {
+      "id": "grammatik_b1",
+      "name": "Grammatik B1",
+      "icon": "📝",
+      "questions": [
+        {
+          "id": "b1_001",
+          "type": "multiple_choice",
+          "text": "Der Hund _____ nicht ins Museum. – Modalverb im Präteritum?",
+          "options": [
+            "darf",
+            "durfte",
+            "dürfte",
+            "gedurft"
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "b1_002",
+          "type": "multiple_choice",
+          "text": "Die Haustiere _____ draußen warten. – Modalverb im Präteritum (müssen)?",
+          "options": [
+            "müssen",
+            "müssten",
+            "mussten",
+            "gemusst"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_003",
+          "type": "multiple_choice",
+          "text": "Wir _____ schon immer das Museum besuchen. – Modalverb im Präteritum (wollen)?",
+          "options": [
+            "wollen",
+            "wollten",
+            "wollte",
+            "gewollt"
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "b1_004",
+          "type": "multiple_choice",
+          "text": "_____ hast du Interesse? – Fragepronomen für Interessen (Woran)?",
+          "options": [
+            "Worüber",
+            "Woran",
+            "Wofür",
+            "Womit"
+          ],
+          "answer": 1,
+          "duration": 15
+        },
+        {
+          "id": "b1_005",
+          "type": "multiple_choice",
+          "text": "Ich mag keine Horrorfilme, _____ Komödien. – Konjunktion für positiven Gegensatz?",
+          "options": [
+            "aber",
+            "denn",
+            "obwohl",
+            "sondern"
+          ],
+          "answer": 3,
+          "duration": 20
+        },
+        {
+          "id": "b1_006",
+          "type": "multiple_choice",
+          "text": "Wo ist die Fernbedienung? – Sie _____ auf dem Tisch. (Zustand/Position)",
+          "options": [
+            "legt",
+            "liegt",
+            "legte",
+            "legen"
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "b1_007",
+          "type": "multiple_choice",
+          "text": "Wohin hast du die Fernbedienung _____? – Perfekt von legen?",
+          "options": [
+            "gelegen",
+            "legen",
+            "gelegt",
+            "liegt"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_008",
+          "type": "multiple_choice",
+          "text": "Das Buch _____ im Regal. – Welches Verb zeigt eine stabile Position?",
+          "options": [
+            "stellt",
+            "gestellt",
+            "steht",
+            "stellen"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_009",
+          "type": "multiple_choice",
+          "text": "Die Eltern schicken Mert ins Ausland, _____ er sein Studium beendet. – Finalsatz?",
+          "options": [
+            "weil",
+            "obwohl",
+            "als",
+            "damit"
+          ],
+          "answer": 3,
+          "duration": 20
+        },
+        {
+          "id": "b1_010",
+          "type": "multiple_choice",
+          "text": "Mert ist im Ausland, _____ sein Studium zu beenden. – Infinitivkonstruktion?",
+          "options": [
+            "damit",
+            "ohne",
+            "um",
+            "statt"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_011",
+          "type": "multiple_choice",
+          "text": "Er trinkt gern _____ Kaffee. – Adjektivendung: Nullartikel, Mask., Akkusativ?",
+          "options": [
+            "kalter",
+            "kalte",
+            "kaltens",
+            "kalten"
+          ],
+          "answer": 3,
+          "duration": 25
+        },
+        {
+          "id": "b1_012",
+          "type": "multiple_choice",
+          "text": "Sie kauft _____ Brot. – Adjektivendung: Nullartikel, Neutrum, Akkusativ?",
+          "options": [
+            "frische",
+            "frischer",
+            "frisches",
+            "frischem"
+          ],
+          "answer": 2,
+          "duration": 25
+        },
+        {
+          "id": "b1_013",
+          "type": "multiple_choice",
+          "text": "Welches Wort leitet eine indirekte Ja/Nein-Frage ein?",
+          "options": [
+            "dass",
+            "als",
+            "ob",
+            "weil"
+          ],
+          "answer": 2,
+          "duration": 15
+        },
+        {
+          "id": "b1_014",
+          "type": "multiple_choice",
+          "text": "Ela fragt: Wie kalt ist es? -> Indirekt: Ela fragt, wie kalt es _____.",
+          "options": [
+            "sei",
+            "ist",
+            "war",
+            "wäre"
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "b1_015",
+          "type": "multiple_choice",
+          "text": "Was ist die Nomenform von pünktlich?",
+          "options": [
+            "die Pünktliche",
+            "das Pünktlich",
+            "die Pünktlichkeit",
+            "der Pünktlich"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_016",
+          "type": "multiple_choice",
+          "text": "Was ist die Nomenform von frei?",
+          "options": [
+            "die Freiheit",
+            "das Freie",
+            "die Freilichkeit",
+            "der Frei"
+          ],
+          "answer": 0,
+          "duration": 20
+        },
+        {
+          "id": "b1_017",
+          "type": "multiple_choice",
+          "text": "Was ist die Nomenform von freundlich?",
+          "options": [
+            "die Freundschaft",
+            "die Freundlichkeit",
+            "das Freundliche",
+            "der Freundlich"
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "b1_018",
+          "type": "multiple_choice",
+          "text": "_____ ich jung war, kam ich zum ersten Mal nach Berlin. – Temporalkonjunktion (einmalig)?",
+          "options": [
+            "Wenn",
+            "Während",
+            "Nachdem",
+            "Als"
+          ],
+          "answer": 3,
+          "duration": 20
+        },
+        {
+          "id": "b1_019",
+          "type": "multiple_choice",
+          "text": "Was ist das Präteritum von kommen?",
+          "options": [
+            "kommte",
+            "gekommen",
+            "kam",
+            "kommt"
+          ],
+          "answer": 2,
+          "duration": 15
+        },
+        {
+          "id": "b1_020",
+          "type": "multiple_choice",
+          "text": "Was ist das Präteritum von gehen?",
+          "options": [
+            "gehte",
+            "gegangen",
+            "geht",
+            "ging"
+          ],
+          "answer": 3,
+          "duration": 15
+        },
+        {
+          "id": "b1_021",
+          "type": "multiple_choice",
+          "text": "Was ist das Präteritum von machen? (regelmäßiges Verb)",
+          "options": [
+            "mochte",
+            "macht",
+            "gemacht",
+            "machte"
+          ],
+          "answer": 3,
+          "duration": 15
+        },
+        {
+          "id": "b1_022",
+          "type": "multiple_choice",
+          "text": "Ich gehe selten ins Kino, _____ ich großes Interesse an Filmen habe. – Konzessivsatz?",
+          "options": [
+            "deshalb",
+            "trotzdem",
+            "weil",
+            "obwohl"
+          ],
+          "answer": 3,
+          "duration": 20
+        },
+        {
+          "id": "b1_023",
+          "type": "multiple_choice",
+          "text": "Ich habe großes Interesse an Filmen, _____ gehe ich selten ins Kino. – Konzessivadverb?",
+          "options": [
+            "obwohl",
+            "weil",
+            "trotzdem",
+            "damit"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_024",
+          "type": "multiple_choice",
+          "text": "Welches Ausrufewort drückt Freude aus?",
+          "options": [
+            "Iiih!",
+            "Autsch!",
+            "Hurra!",
+            "Schade!"
+          ],
+          "answer": 2,
+          "duration": 15
+        },
+        {
+          "id": "b1_025",
+          "type": "multiple_choice",
+          "text": "Manuela springt _____ als Alina. – Komparativ von hoch?",
+          "options": [
+            "hochter",
+            "höcher",
+            "hocher",
+            "höher"
+          ],
+          "answer": 3,
+          "duration": 20
+        },
+        {
+          "id": "b1_026",
+          "type": "multiple_choice",
+          "text": "Wolfgang singt am _____. – Superlativ von tief (Adverb)?",
+          "options": [
+            "tiefste",
+            "tiefster",
+            "tiefsten",
+            "tiefer"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_027",
+          "type": "multiple_choice",
+          "text": "Er hat die _____ Stimme. – Superlativ von tief als Adjektiv (bestimmter Artikel, fem.)?",
+          "options": [
+            "tiefste",
+            "tiefsten",
+            "tiefster",
+            "tiefer"
+          ],
+          "answer": 0,
+          "duration": 20
+        },
+        {
+          "id": "b1_028",
+          "type": "multiple_choice",
+          "text": "Ich möchte gewinnen, _____ trainiere ich jeden Tag. – Konsequenzadverb?",
+          "options": [
+            "obwohl",
+            "deshalb",
+            "damit",
+            "weil"
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "b1_029",
+          "type": "multiple_choice",
+          "text": "Ich habe vor, das Projekt durch_____führen. – Trennbares Verb mit zu?",
+          "options": [
+            "zu durchführen",
+            "durchführen zu",
+            "durchzuführen",
+            "durchführen"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_030",
+          "type": "multiple_choice",
+          "text": "Sie soll nichts tun, _____ den Arzt vorher zu fragen. – ohne + zu?",
+          "options": [
+            "um",
+            "damit",
+            "ohne",
+            "statt"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_031",
+          "type": "multiple_choice",
+          "text": "Sie müssen schreiben, _____ nur zu reden. – (an)statt + zu?",
+          "options": [
+            "ohne",
+            "(an)statt",
+            "um",
+            "damit"
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "b1_032",
+          "type": "multiple_choice",
+          "text": "Wenn ich Zeit _____, würde ich ins Konzert gehen. – Konjunktiv II von haben?",
+          "options": [
+            "habe",
+            "hatte",
+            "gehabt",
+            "hätte"
+          ],
+          "answer": 3,
+          "duration": 20
+        },
+        {
+          "id": "b1_033",
+          "type": "multiple_choice",
+          "text": "Ich wünschte, ich _____ so berühmt. – Konjunktiv II von sein?",
+          "options": [
+            "bin",
+            "war",
+            "sei",
+            "wäre"
+          ],
+          "answer": 3,
+          "duration": 20
+        },
+        {
+          "id": "b1_034",
+          "type": "multiple_choice",
+          "text": "Wenn ich Zeit hätte, _____ ich ins Konzert gehen. – würde + Infinitiv?",
+          "options": [
+            "werde",
+            "würde",
+            "will",
+            "wollte"
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "b1_035",
+          "type": "multiple_choice",
+          "text": "Aktiv: Man soll mehr Energie sparen. – Welche Passivform ist korrekt?",
+          "options": [
+            "Mehr Energie soll sparen werden.",
+            "Mehr Energie soll gespart werden.",
+            "Mehr Energie wird gesparen.",
+            "Mehr Energie soll werden gespart."
+          ],
+          "answer": 1,
+          "duration": 25
+        },
+        {
+          "id": "b1_036",
+          "type": "multiple_choice",
+          "text": "Ich bin _____ diesem Projekt interessiert. – Welche Präposition?",
+          "options": [
+            "für",
+            "über",
+            "an",
+            "mit"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_037",
+          "type": "multiple_choice",
+          "text": "Ich bin _____ dem Ergebnis zufrieden. – Welche Präposition?",
+          "options": [
+            "an",
+            "über",
+            "bei",
+            "mit"
+          ],
+          "answer": 3,
+          "duration": 20
+        },
+        {
+          "id": "b1_038",
+          "type": "multiple_choice",
+          "text": "Ich bin _____ die Werke erstaunt. – Welche Präposition?",
+          "options": [
+            "mit",
+            "an",
+            "über",
+            "für"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_039",
+          "type": "multiple_choice",
+          "text": "Das ist die Erfindung _____ Computers. – Genitiv, Maskulinum?",
+          "options": [
+            "der",
+            "dem",
+            "des",
+            "den"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_040",
+          "type": "multiple_choice",
+          "text": "Das ist das Buch _____ Schriftstellerin. – Genitiv, Femininum?",
+          "options": [
+            "des",
+            "die",
+            "dem",
+            "der"
+          ],
+          "answer": 3,
+          "duration": 20
+        },
+        {
+          "id": "b1_041",
+          "type": "multiple_choice",
+          "text": "Das ist der Film, _____ ich sehr interessant finde. – Relativpronomen (Mask., Akkusativ)?",
+          "options": [
+            "der",
+            "dem",
+            "dessen",
+            "den"
+          ],
+          "answer": 3,
+          "duration": 20
+        },
+        {
+          "id": "b1_042",
+          "type": "multiple_choice",
+          "text": "Ich mag Talkshows, zu _____ man interessante Gäste einlädt. – Relativpronomen (Plural, Dativ)?",
+          "options": [
+            "die",
+            "denen",
+            "deren",
+            "derer"
+          ],
+          "answer": 1,
+          "duration": 25
+        },
+        {
+          "id": "b1_043",
+          "type": "multiple_choice",
+          "text": "Ich hatte an einem Sprachkurs _____. – Plusquamperfekt von teilnehmen?",
+          "options": [
+            "teilgenommen",
+            "teilnehmen",
+            "genommen",
+            "teilgenommt"
+          ],
+          "answer": 0,
+          "duration": 20
+        },
+        {
+          "id": "b1_044",
+          "type": "multiple_choice",
+          "text": "_____ ich den Kurs beendete, konnte ich mich besser verständigen. – Vorzeitigkeit?",
+          "options": [
+            "Als",
+            "Während",
+            "Nachdem",
+            "Bevor"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_045",
+          "type": "multiple_choice",
+          "text": "_____ ich in Japan war, war meine Schwester in Australien. – Gleichzeitigkeit?",
+          "options": [
+            "Nachdem",
+            "Als",
+            "Während",
+            "Bevor"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_046",
+          "type": "multiple_choice",
+          "text": "Plusquamperfekt – Mit welchen Hilfsverben wird es gebildet?",
+          "options": [
+            "werden + Partizip II",
+            "haben + Infinitiv",
+            "hatte/war + Partizip II",
+            "wird + Partizip II"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_047",
+          "type": "multiple_choice",
+          "text": "Ich lese gern _____ Bücher. – Adjektivendung: Nullartikel, Plural, Akkusativ?",
+          "options": [
+            "spannende",
+            "spannendes",
+            "spannender",
+            "spannendem"
+          ],
+          "answer": 0,
+          "duration": 25
+        },
+        {
+          "id": "b1_048",
+          "type": "multiple_choice",
+          "text": "Welcher Satz ist grammatikalisch korrekt (Konjunktiv II)?",
+          "options": [
+            "Wenn ich reich bin, kaufe ich ein Auto.",
+            "Wenn ich reich wäre, würde ich ein Auto kaufen.",
+            "Wenn ich reich war, kaufte ich ein Auto.",
+            "Wenn ich reich wäre, kaufe ich ein Auto."
+          ],
+          "answer": 1,
+          "duration": 25
+        },
+        {
+          "id": "b1_049",
+          "type": "multiple_choice",
+          "text": "Trotz _____ Regens gingen wir spazieren. – Genitiv-Präposition?",
+          "options": [
+            "dem",
+            "den",
+            "des",
+            "der"
+          ],
+          "answer": 2,
+          "duration": 20
+        },
+        {
+          "id": "b1_050",
+          "type": "multiple_choice",
+          "text": "Ich kenne den Mann, _____ Frau Lehrerin ist. – Relativpronomen im Genitiv?",
+          "options": [
+            "den",
+            "dem",
+            "dessen",
+            "deren"
+          ],
+          "answer": 2,
+          "duration": 25
+        },
+        {
+          "id": "b1_051",
+          "type": "multiple_choice",
+          "text": "Nachdem er die Hausaufgaben _____, ging er schlafen. – Plusquamperfekt (machen)?",
+          "options": [
+            "gemacht hatte",
+            "gemacht hat",
+            "machte",
+            "machen"
+          ],
+          "answer": 0,
+          "duration": 25
+        },
+        {
+          "id": "b1_052",
+          "type": "multiple_choice",
+          "text": "Welches Verb passt: Er _____ schon weggegangen, als ich kam.",
+          "options": [
+            "hatte",
+            "war",
+            "ist",
+            "wird"
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "b1_053",
+          "type": "multiple_choice",
+          "text": "Klaus fragt: „Wann fängt der Kurs an?“ → Klaus will wissen, _____ der Kurs anfängt.",
+          "options": [
+            "ob",
+            "wann",
+            "dass",
+            "wie"
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "b1_054",
+          "type": "multiple_choice",
+          "text": "Das war _____ peinlich! (Derecelendirme: çok/oldukça)",
+          "options": [
+            "gar nicht",
+            "ein bisschen",
+            "ziemlich",
+            "nichts"
+          ],
+          "answer": 2,
+          "duration": 15
+        },
+        {
+          "id": "b1_055",
+          "type": "multiple_choice",
+          "text": "Ich bin froh _____ das gute Ergebnis. – Präposition?",
+          "options": [
+            "an",
+            "über",
+            "mit",
+            "für"
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "b1_056",
+          "type": "multiple_choice",
+          "text": "_____ du mir bitte helfen? – Höfliche Bitte (Konjunktiv II)?",
+          "options": [
+            "Kannst",
+            "Könntest",
+            "Konntest",
+            "Gekonnt"
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "b1_057",
+          "type": "multiple_choice",
+          "text": "Das Problem kann gelöst _____. – Passiv mit Modalverb?",
+          "options": [
+            "sein",
+            "werden",
+            "worden",
+            "ist"
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "b1_058",
+          "type": "multiple_choice",
+          "text": "Es ist wichtig, jeden Tag Deutsch _____ lernen.",
+          "options": [
+            "zu",
+            "um",
+            "für",
+            "statt"
+          ],
+          "answer": 0,
+          "duration": 15
+        },
+        {
+          "id": "b1_059",
+          "type": "multiple_choice",
+          "text": "Plusquamperfekt: Welches Hilfsverb passt zu „einschlafen“?",
+          "options": [
+            "hatte",
+            "war",
+            "ist",
+            "bin"
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "b1_060",
+          "type": "multiple_choice",
+          "text": "Welche Konjunktion leitet einen Grund ein?",
+          "options": [
+            "obwohl",
+            "deshalb",
+            "weil",
+            "trotzdem"
+          ],
+          "answer": 2,
+          "duration": 15
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bil ve Fethet - Host Board</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/board.css">
+  <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <div class="bg-blobs"></div>
+
+  <div id="board-root">
+    
+    <!-- LOBBY SCREEN -->
+    <div id="screen-lobby" class="screen visible glass">
+      <div class="lobby-left">
+        <div class="lobby-logo">
+          <div class="lobby-logo-icon">🌍</div>
+          <h1 class="lobby-title">Bil ve Fethet</h1>
+          <p class="lobby-subtitle">Deutschland Edition - Tritt dem Spiel bei!</p>
+        </div>
+        
+        <div class="player-list-container">
+          <div class="player-list-header">
+            <span class="player-list-title">Verbundene Spieler</span>
+            <span class="player-count-badge"><span id="player-count">0</span>/25</span>
+          </div>
+          <div id="player-list">
+            <div class="waiting-hint" id="no-players-hint">Warte auf Spieler...</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="lobby-right">
+        <div class="qr-card">
+          <span class="qr-label">Scan zum Beitreten</span>
+          <div id="qr-canvas" style="border-radius: 10px; overflow: hidden; display: inline-block;"></div>
+          <div class="peer-id-display">ID: <span id="host-id-display">...</span></div>
+        </div>
+        
+        <div class="settings-card" style="margin-top: 15px; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+          <label style="display: block; font-size: 0.9rem; color: #a0aec0; margin-bottom: 8px;">Soru Süresi (Saniye)</label>
+          <select id="setting-duration" style="width: 100%; padding: 10px; border-radius: 8px; background: rgba(0,0,0,0.3); color: white; border: 1px solid rgba(255,255,255,0.2); outline: none;">
+            <option value="0">Varsayılan (Sorudan gelen)</option>
+            <option value="10">10 Saniye</option>
+            <option value="15">15 Saniye</option>
+            <option value="20">20 Saniye</option>
+            <option value="30">30 Saniye</option>
+            <option value="45">45 Saniye</option>
+            <option value="60">60 Saniye</option>
+          </select>
+        </div>
+
+        <button id="btn-start-game" class="btn btn-primary lobby-start-btn" style="margin-top: 15px;" disabled>Spiel Starten (Min. 2)</button>
+      </div>
+    </div>
+
+    <!-- GAME SCREEN -->
+    <div id="screen-game" class="screen hidden glass-strong">
+      <div class="map-panel">
+        <div class="map-panel-top">
+          <div class="round-info">
+            <span class="round-number">Runde <span id="round-current">1</span></span>
+            <div class="region-badge" id="active-region-badge" style="display: none;">
+              <span>📍</span> <span id="active-region-name">Region</span>
+            </div>
+          </div>
+        </div>
+        <div id="map-container"></div>
+      </div>
+      
+      <div class="side-panel">
+        <div class="question-card" id="question-card" style="opacity: 0.5;">
+          <div class="q-category">
+            <span id="q-category-icon">❓</span> <span id="q-category-name">Kategorie</span>
+            <span class="q-type-badge" id="q-type-badge">MC</span>
+          </div>
+          <div class="q-text" id="q-text">Warte auf nächste Frage...</div>
+          <div class="q-options" id="q-options" style="display: none;">
+            <!-- Options dynamically generated here -->
+          </div>
+          <div class="countdown-ring-container" id="countdown-container" style="display: none;">
+            <div class="countdown-ring">
+              <svg width="80" height="80" viewBox="0 0 100 100">
+                <circle class="countdown-ring-bg" cx="50" cy="50" r="45"></circle>
+                <circle class="countdown-ring-fg" id="timer-circle" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="0"></circle>
+              </svg>
+              <div class="countdown-number" id="timer-text">20</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="scores-panel">
+          <div class="scores-panel-title">Rangliste</div>
+          <div id="scoreboard-list">
+            <!-- Scores dynamically generated here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Round Result Overlay -->
+      <div id="round-result-overlay">
+        <div class="round-result-card">
+          <div class="result-trophy">🏆</div>
+          <h2 class="result-winner-name" id="round-winner-name">Spieler</h2>
+          <div class="result-region" id="round-conquered-text">Hat Region erobert!</div>
+          <div class="result-score-gained" id="round-score-text">+1000 Pkt</div>
+          <div style="margin-top: 15px; font-size: 0.85rem; color: #a0aec0;" id="round-correct-answer">Korrekte Antwort: ...</div>
+          <button id="btn-next-question" class="btn btn-primary next-question-btn">Nächste Frage ➜</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GAME OVER SCREEN -->
+    <div id="screen-gameover" class="screen hidden glass">
+      <div class="gameover-layout">
+        <div class="gameover-map" id="gameover-map-container"></div>
+        <div class="gameover-right">
+          <h1 class="gameover-title">Spiel Beendet!</h1>
+          
+          <div class="podium" id="final-podium">
+            <!-- Final podium dynamically generated -->
+          </div>
+          
+          <div style="margin-top: 20px;">
+            <h3 style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px; text-transform: uppercase;">Eroberte Regionen</h3>
+            <div class="region-conquest-summary" id="final-regions-summary">
+               <!-- Summary of conquered regions -->
+            </div>
+          </div>
+          
+          <button id="btn-new-game" class="btn btn-primary" style="margin-top: 30px; width: 100%;">Neues Spiel</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/map.js?v=2"></script>
+  <script src="js/game.js?v=2"></script>
+  <script src="js/board.js?v=2"></script>
+</body>
+</html>

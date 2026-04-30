@@ -1,0 +1,410 @@
+========================================================
+DEUTHERQUIZ - B1 DÜZEYİ ALMANCA GRAMERİ
+MEB Almanca Öğretim Programına Göre Kazanımlar
+========================================================
+Kaynak: MEB Almanca Yabancı Dil Öğretim Programı (2018)
+Hazırlayan: DeutherQuiz Eğitim Aktivitesi
+Aktivite Türü: Sınıf içi rekabetçi quiz oyunu (DeutherQuiz)
+Hedef Düzey: B1 (Avrupa Ortak Dil Referans Çerçevesi - CEFR)
+Oynanış Ortamı: Akıllı tahta + öğrenci akıllı telefonları (QR ile bağlantı)
+========================================================
+
+GİRİŞ
+------
+Bu aktivite, MEB 2018 Almanca Öğretim Programı'nın B1 düzeyi
+(B1.1 ve B1.2) kapsamında yer alan gramer konularını, DeutherQuiz
+oyunu üzerinden sınıf ortamında pekiştirmeyi amaçlamaktadır.
+Oyun; Almanya haritası üzerinde ülkeyi fethetme mekaniğiyle
+öğrencileri motive ederek derse aktif katılımı teşvik eder.
+
+========================================================
+BÖLÜM 1: B1.1 DÖNEMİ GRAMER KONULARI VE KAZANIMLARI
+========================================================
+
+--- THEMENKREIS 1: Länder - Städte - Kulturen ---
+GRAMER KONUSU: Modalverben im Präteritum (Wiederholung)
+(dürfen, müssen, wollen, können, sollen → Geçmiş zaman çekimleri)
+
+KAZANIMLAR:
+1. Öğrenci, modalverb'lerin (dürfen, müssen, wollen, können, sollen)
+   Präteritum (geçmiş zaman) çekimlerini doğru biçimde kullanır.
+2. Geçmiş olayları anlatırken modalverb'leri uygun formda seçer
+   ve cümlede konumlandırır.
+3. "Der Hund durfte nicht ins Museum." gibi örnek cümleleri anlayarak
+   üretir.
+
+OYUN KATKISİ: Öğrenciler, modal fiillerin doğru Präteritum formunu seçmek
+için birbiriyle yarışırken hem hız hem doğruluk dengesi kurar. Haritada
+bölge kazanmak için hızlı karar vermek zorunda kalmaları, bu yapıları
+otomatikleştirir.
+
+---
+GRAMER KONUSU: Fragepronomen "Woran"
+(Woran, Wofür, Womit gibi soru zamirleri)
+
+KAZANIMLAR:
+4. Öğrenci, "Woran hast du Interesse?" gibi bağlaçlı soru zamirlerini
+   doğru bağlamda kullanır.
+5. Woran / Wofür / Womit ayrımını anlayarak uygun soruyu üretir.
+6. Dil öğrenme ilgilerini ifade eden cümleleri gramer açısından doğru kurar.
+
+========================================================
+
+--- THEMENKREIS 2: Emotionen ---
+GRAMER KONUSU: Konjunktion "sondern"
+
+KAZANIMLAR:
+7. Öğrenci, "aber" ile "sondern" arasındaki farkı kavrar.
+8. Olumsuz bir ifadenin ardından olumlu bir seçenek sunarken
+   "sondern" bağlacını doğru kullanır.
+   Örnek: "Ich mag keine Horrorfilme, sondern Komödien."
+
+---
+GRAMER KONUSU: Positionverben: legen/liegen - stellen/stehen - setzen/sitzen
+
+KAZANIMLAR:
+9.  Öğrenci, nesnenin mevcut konumunu ifade eden fiiller (liegen, stehen,
+    sitzen) ile yer değiştirme eylemini ifade eden fiiller (legen, stellen,
+    setzen) arasındaki farkı ayırt eder.
+10. "Die Fernbedienung liegt auf dem Tisch." (konum) ve
+    "Ich habe sie auf den Tisch gelegt." (eylem) yapılarını üretir.
+11. Konum sorusu için "Wo?" (Dativ), hareket sorusu için "Wohin?" (Akkusativ)
+    kullanımını kavrar.
+
+OYUN KATKISİ: Durum/hareket fiillerini birbirinden ayıran bu konu, oyun
+sırasında hızlı düşünme gerektirdiğinden öğrencilerin zihinsel şemalarını
+güçlendirir.
+
+========================================================
+
+--- THEMENKREIS 3: Auslandsstudium ---
+GRAMER KONUSU: Konjunktion "damit" ve "um...zu"
+
+KAZANIMLAR:
+12. Öğrenci, amaç bildiren "damit" bağlacını (farklı özne) ve "um...zu"
+    yapısını (aynı özne) birbiriyle karıştırmadan kullanır.
+13. "Die Eltern schicken Mert ins Ausland, damit er studiert." ve
+    "Mert geht ins Ausland, um zu studieren." arasındaki farkı açıklar.
+
+---
+GRAMER KONUSU: Adjektivdeklination mit Nullartikel
+
+KAZANIMLAR:
+14. Öğrenci, sıfırımsı artikel (Nullartikel) ile gelen sıfatların
+    çekimini yapar (güçlü çekim / starke Deklination).
+15. "Er trinkt gern kalten Kaffee." gibi cümlelerle Akkusativ,
+    Dativ ve Nominativ farklılıklarını uygular.
+
+========================================================
+
+--- THEMENKREIS 4: Dachländer ---
+GRAMER KONUSU: Indirekte Fragesätze (Wiederholung)
+
+KAZANIMLAR:
+16. Öğrenci, bir soru cümlesini dolaylı soru cümlesine dönüştürür.
+17. W-sorular için "ob" dışında uygun soru zamirini kullanarak
+    dolaylı cümle kurar.
+    Direkt: "Wie kalt ist es?" → İndirekt: "Ela fragt, wie kalt es ist."
+18. Evet/hayır sorularını "ob" ile dolaylı cümleye çevirir.
+    Direkt: "Soll ich Ski mitnehmen?" → "Ela will wissen, ob sie Ski
+    mitnehmen soll."
+
+---
+GRAMER KONUSU: Nomen aus Adjektiven (Nominalisierung)
+
+KAZANIMLAR:
+19. Öğrenci, sıfatlardan isim türetme kuralını kavrar (-heit, -keit ekleri).
+    Örnekler: frei → die Freiheit | pünktlich → die Pünktlichkeit |
+              freundlich → die Freundlichkeit
+20. Bu isim türevlerini cümlede doğru artikel ve çekimle kullanır.
+
+---
+GRAMER KONUSU: Konjunktion "als" (Perfekt/Präteritum)
+
+KAZANIMLAR:
+21. Öğrenci, geçmişte tek seferlik bir olayı anlatırken "als" bağlacını,
+    tekrar eden olaylarda ise "wenn" bağlacını doğru biçimde kullanır.
+    Örnek: "Als ich jung war, kam ich zum ersten Mal nach Istanbul."
+
+========================================================
+
+--- THEMENKREIS 5: Eine Reise in die Metropole ---
+GRAMER KONUSU: Präteritum (düzenli ve düzensiz fiiller)
+
+KAZANIMLAR:
+22. Öğrenci, düzenli (schwache) fiillerin Präteritum çekimini yapar.
+    Örnek: machen → machte, spielen → spielte
+23. Öğrenci, temel düzensiz (starke) fiillerin Präteritum formlarını bilir.
+    Örnek: kommen → kam, gehen → ging, fahren → fuhr, sehen → sah
+24. Sözlü ve yazılı anlatılarda Präteritum'u uygun bağlamda kullanır.
+
+========================================================
+
+--- THEMENKREIS 6: Spaß haben ---
+GRAMER KONUSU: Ausrufewörter (Ünlemler)
+
+KAZANIMLAR:
+25. Öğrenci, farklı duygu durumlarına ait Almanca ünlemleri tanır ve kullanır.
+    Freude / Sevinç: Hurra! Super! Spitze!
+    Bewunderung / Hayranlık: Toll! Süß! Schön!
+    Überraschung / Şaşkınlık: Nanu! Hoppla! Oh!
+    Schmerz / Acı: Aua! Autsch!
+    Bedauern / Üzüntü: Schade! Leider!
+    Ekel / İğrenme: Iiih! Igitt!
+26. Dinleme ve okuma metinlerinde ünlemleri bağlamına göre yorumlar.
+
+---
+GRAMER KONUSU: Gradpartikeln (Derecelendirme zarfları)
+(sehr, ziemlich, besonders, ein bisschen, gar nicht)
+
+KAZANIMLAR:
+27. Öğrenci, duygu ve durumları derecelendirerek ifade eder.
+    Örnek: "Die Situation war ziemlich peinlich."
+           "Klaus hat besonders viel geübt."
+           "Das war gar nicht komisch."
+
+---
+GRAMER KONUSU: Konjunktionen "obwohl" ve "trotzdem"
+
+KAZANIMLAR:
+28. Öğrenci, "obwohl" (zıtlık bağlacı / Nebensatz) ile "trotzdem"
+    (zıtlık zarfı / Hauptsatz) arasındaki farkı kavrar.
+    Örnek: "Ich gehe selten ins Kino, obwohl ich Interesse habe."
+           "Ich habe Interesse, trotzdem gehe ich selten ins Kino."
+29. Her iki yapıyı doğru sözdizimsel konumda kullanır.
+
+OYUN KATKISİ: Öğrenciler bu soruları cevaplayarak "obwohl" ve "trotzdem"
+arasındaki hem anlam hem sözdizimi farkını oyun baskısı altında öğrenerek
+kalıcı hale getirir.
+
+========================================================
+BÖLÜM 2: B1.2 DÖNEMİ GRAMER KONULARI VE KAZANIMLARI
+========================================================
+
+--- THEMENKREIS 1: Wettbewerbe ---
+GRAMER KONUSU: Komparativ / Superlativ als Adjektiv vor dem Nomen
+
+KAZANIMLAR:
+30. Öğrenci, Komparativ ve Superlativ'i hem yüklem olarak (prädikativ)
+    hem de isimden önce (attributiv) doğru eklerle kullanır.
+    Örnek: "Manuela springt höher als Alina." (adverb/prädikativ)
+           "Sie hat längere Beine." (attributiv)
+           "Er hat die tiefste Stimme." (attributiv Superlativ)
+31. Düzensiz karşılaştırma biçimlerini bilir: gut → besser → am besten,
+    groß → größer → am größten, hoch → höher → am höchsten.
+
+---
+GRAMER KONUSU: Konjunktionen: deshalb, deswegen, darum
+
+KAZANIMLAR:
+32. Öğrenci, neden-sonuç ilişkisini "deshalb / deswegen / darum" ile ifade eder.
+    Örnek: "Ich möchte gewinnen, deshalb trainiere ich jeden Tag."
+33. Bu zarfların ana cümlede sözdizimsel konumunu (fiil öne geçer) kavrar.
+
+========================================================
+
+--- THEMENKREIS 2: Wir als Verbraucher ---
+GRAMER KONUSU: Infinitivkonstruktionen (Infinitiv mit "zu")
+
+KAZANIMLAR:
+34. Öğrenci, aşağıdaki Infinitivkonstruksiyon yapılarını birbirinden ayırır:
+    a) "zu + Infinitiv" (Ich habe vor, das Projekt durchzuführen.)
+    b) "ohne + zu + Infinitiv" (Sie soll nichts tun, ohne den Arzt zu fragen.)
+    c) "brauchen + nicht/nur + zu + Infinitiv"
+       (Sie brauchen nicht noch einmal anzurufen.)
+    d) "(an)statt + zu + Infinitiv"
+       (Sie müssen schreiben, statt nur zu reden.)
+35. Trennbare fiillerde "zu" nin takının arasına girdiğini kavrar.
+    Örnek: durchführen → "durchzuführen"
+36. Bu yapıların "damit" ile kullanım farkını açıklar.
+
+========================================================
+
+--- THEMENKREIS 3: Begabt in Kunst und Musik ---
+GRAMER KONUSU: Konjunktiv II: hätte, wäre / würde + Infinitiv
+
+KAZANIMLAR:
+37. Öğrenci, gerçeğe aykırı koşul ve dilek cümlelerini Konjunktiv II
+    ile kurar.
+    Dilek: "Ich wünschte, ich hätte eine schöne Stimme."
+           "Ich wünschte, ich wäre so berühmt."
+    Koşul: "Wenn ich Zeit hätte, würde ich ins Konzert gehen."
+38. "hätte" (haben'in Konj. II) ile "wäre" (sein'in Konj. II) formlarını
+    doğru bağlamlarda kullanır.
+39. "würde + Infinitiv" yapısını koşulun ana cümlesinde kullanır.
+40. Gerçek koşul (Wenn ich Zeit habe...) ile gerçeğe aykırı koşul
+    (Wenn ich Zeit hätte...) arasındaki farkı kavrar.
+
+OYUN KATKISİ: Konjunktiv II, B1 öğrencilerinin en zorlandığı konulardan
+biridir. Oyun ortamında hızlı karar gerektiren sorular, öğrencilerin bu
+yapıyı analitik değil sezgisel olarak öğrenmesine katkı sağlar.
+
+========================================================
+
+--- THEMENKREIS 4: Planet Erde ---
+GRAMER KONUSU: Passiv mit Modalverben
+
+KAZANIMLAR:
+41. Öğrenci, modal fiilli Passiv yapısını kurar:
+    Modalverb + Partizip II + "werden"
+    Aktiv: "Man soll mehr Energie sparen."
+    Passiv: "Mehr Energie soll gespart werden."
+42. Farklı modal fiillerle (sollen, müssen, können, dürfen) Passiv cümle üretir.
+43. Aktif-Pasif dönüşümü yaparken özne ve nesne konumlarını doğru belirler.
+
+========================================================
+
+--- THEMENKREIS 5: Ehrenamtlich ---
+GRAMER KONUSU: Adjektive mit Präpositionen
+
+KAZANIMLAR:
+44. Öğrenci, sıklıkla kullanılan Adjektiv + Präposition kombinasyonlarını
+    kalıp olarak öğrenir:
+    interessiert an + Dativ   → "Ich bin an diesem Projekt interessiert."
+    zufrieden mit + Dativ     → "Ich bin mit dem Ergebnis zufrieden."
+    erstaunt über + Akkusativ → "Ich bin über die Werke erstaunt."
+    froh über + Akkusativ     → "Ich bin über das Ergebnis froh."
+    befreundet mit + Dativ    → "Ich bin mit ihm befreundet."
+45. Soru sormak için "Woran, Womit, Worüber" gibi bağlaçlı soru
+    zamirlerini doğru kullanır.
+
+========================================================
+
+--- THEMENKREIS 6: Heutzutage Technik ---
+GRAMER KONUSU: Genitiv (Nomen ve Possessivpronomen)
+
+KAZANIMLAR:
+46. Öğrenci, ismin Genitiv (iyelik) durumunu doğru artikel ve
+    isim ekleriyle kullanır:
+    Maskulinum/Neutrum → des + (e)s: "Die Erfindung des Computers"
+    Femininum/Plural   → der:       "Das Buch der Schriftstellerin"
+47. Sahiplik ilişkisini ifade etmek için Genitiv yapısını kullanır.
+
+---
+GRAMER KONUSU: Relativsätze (Wiederholung)
+
+KAZANIMLAR:
+48. Öğrenci, relative Pronomen'i (der, die, das, dem, den, denen, dessen)
+    cins, hal (Kasus) ve tekil/çoğul durumuna göre doğru seçer.
+    Örnek: "Das ist der Film, den ich interessant finde." (Mask., Akkusativ)
+           "Ich mag Talkshows, zu denen man Gäste einlädt." (Plural, Dativ + Präp.)
+49. Relativsatz'ı ana cümleyle doğru virgül ve sözdizimi ile birleştirir.
+
+========================================================
+
+--- THEMENKREIS 7: Sprachreisen ---
+GRAMER KONUSU: Plusquamperfekt
+
+KAZANIMLAR:
+50. Öğrenci, geçmişte başka bir geçmiş eyleme oranla daha önce
+    gerçekleşmiş olayları ifade etmek için Plusquamperfekt'i kullanır.
+    Yapı: hatte/war + Partizip II
+    Örnek: "Ich hatte an einem Sprachkurs teilgenommen."
+           "Sie war schon abgereist, als ich ankam."
+51. Plusquamperfekt ile Perfekt/Präteritum arasındaki zamansal
+    öncelik-sonralık ilişkisini kavrar.
+
+---
+GRAMER KONUSU: Temporale Nebensätze: "nachdem" ve "während"
+
+KAZANIMLAR:
+52. Öğrenci, "nachdem" (sonrasında) ve "während" (esnasında) bağlaçlarını
+    doğru zaman bağlamında kullanır.
+    Vorzeitigkeit (Öncelik): "Nachdem ich den Kurs beendete, konnte ich
+    mich besser verständigen."
+    Gleichzeitigkeit (Eşzamanlılık): "Während ich in Japan war, war meine
+    Schwester in Australien."
+53. "Nachdem" ile Plusquamperfekt veya Präteritum kombinasyonunu
+    doğru biçimde kullanır.
+
+========================================================
+BÖLÜM 3: AKTİVİTENİN SINIF ORTAMINA GENEL KATKILARI
+========================================================
+
+ÖĞRENME HEDEFLERİ (CEFR B1 Kapsamı):
+
+HÖREN (Dinleme):
+- Öğrenci, gramer yapılarını içeren kısa sözlü açıklamaları anlayabilir.
+- Sorular okunduğunda veya duyulduğunda, gramatik ipuçlarından yararlanarak
+  anlam çıkarabilir.
+
+SPRECHEN (Konuşma):
+- Oyun sonrasında yapılan grup tartışmalarında öğrenciler, hangi gramer
+  kuralının geçerli olduğunu Almanca açıklamaya teşvik edilir.
+- Rekabetçi ortam, öğrencileri kısa ve öz Almanca cümleler kurmaya iter.
+
+LESEN (Okuma):
+- Soru metinleri, boşluk doldurma ve seçenek analizi gerektirdiğinden
+  öğrencinin dikkatli okuma becerisi gelişir.
+
+SCHREIBEN (Yazma):
+- Oyun bitiminde öğretmen, öğrencilerden belirlenen gramer yapılarını
+  kullanarak kısa cümleler yazmalarını isteyebilir (pekiştirme aktivitesi).
+
+========================================================
+OYUNUN SINIF YÖNETİMİNE KATKILARI
+========================================================
+
+1. MOTİVASYON VE KATILIM:
+   - Almanya haritası üzerindeki "fetih" mekaniği, soyut gramer konularını
+     somut ve hedef odaklı bir aktiviteye dönüştürür.
+   - Her öğrenci telefonuyla bağlanarak bireysel olarak yarışır;
+     pasif kalmak mümkün değildir.
+
+2. HIZLI KARAR VERME:
+   - Sorular süre sınırlıdır; bu durum öğrencilerin gramer kurallarını
+     düşünmeden, içselleştirilmiş biçimde kullanmasını pekiştirir.
+   - Doğruluk + hız kombinasyonu, yüksek puan = bölge kazanımı şeklinde
+     somut bir ödüle dönüşür.
+
+3. YANLIŞ YAPMAKTAN KORKMAMA:
+   - Oyun ortamı, sınıf sınavının yarattığı baskıyı azaltır.
+   - Yanlış cevaplar haritada bölge kaybı olarak görülür; bu durum
+     öğrencilerin hatalarını fark etmesine olumsuz bir duygu yüklenmeden
+     olanak tanır.
+
+4. AKRAN ÖĞRENMESİ:
+   - Oyun sonrasında hangi sorunun neden yanlış cevaplanıp cevaplanmadığı
+     sınıf içinde tartışılabilir.
+   - Doğru cevabı veren öğrenciler, diğerlerine açıklama yaparak
+     öğretici role geçer (akran öğretimi).
+
+5. DİFERANSİYEL ÖĞRETİM:
+   - Farklı süre ayarları (15-30 sn.) sayesinde kolay ve zor sorular
+     aynı oyun içinde dengelenebilir.
+   - Öğretmen, isterse belirli gramer kategorilerini seçerek oyunu
+     mevcut üniteye göre özelleştirebilir.
+
+========================================================
+DEĞERLENDIRME ÖNERİLERİ
+========================================================
+
+- Oyundan önce: Öğrencilere ilgili gramer konusu kısaca hatırlatılır.
+- Oyun sırasında: Hangi soruların en çok yanlış cevaplandiği not edilir.
+- Oyundan sonra:
+  * En çok hata yapılan 3-5 gramer konusu tahtaya yazılır.
+  * Öğrencilerle mini tartışma yapılır.
+  * Opsiyonel: Her öğrencinin hata yaptığı konuyla ilgili 2 orijinal
+    cümle yazması istenir.
+
+========================================================
+İLGİLİ MEB KAZANIMLARI (Program Numaraları)
+========================================================
+
+B1.1 Themenkreis 1 → Konuşma Kazanımı 1, 2, 3
+B1.1 Themenkreis 2 → Konuşma Kazanımı 4, 5, 6
+B1.1 Themenkreis 3 → Konuşma Kazanımı 7, 8, 9, 10
+B1.1 Themenkreis 4 → Konuşma Kazanımı 11, 12, 13, 14
+B1.1 Themenkreis 5 → Konuşma Kazanımı 15, 16, 17, 18
+B1.1 Themenkreis 6 → Konuşma Kazanımı 19, 20, 21, 22
+B1.2 Themenkreis 1 → Konuşma Kazanımı 1, 2, 3, 4, 5, 6
+B1.2 Themenkreis 2 → Konuşma Kazanımı 7, 8, 9, 10, 11, 12
+B1.2 Themenkreis 3 → Konuşma Kazanımı 13, 14, 15, 16
+B1.2 Themenkreis 4 → Konuşma Kazanımı 17, 18, 19, 20
+B1.2 Themenkreis 5 → Konuşma Kazanımı 21, 22, 23, 24
+B1.2 Themenkreis 6 → Konuşma Kazanımı 25, 26, 27, 28
+B1.2 Themenkreis 7 → Konuşma Kazanımı 29, 30, 31, 32
+
+========================================================
+Son düzenleme: 2026-04-30
+========================================================

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Bil ve Fethet - Controller</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/controller.css">
+  <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+</head>
+<body>
+  <div class="bg-blobs"></div>
+
+  <div id="controller-root">
+    
+    <!-- CONNECTING SCREEN -->
+    <div id="ctrl-connecting" class="ctrl-screen visible">
+      <div class="ctrl-spinner"></div>
+      <h2 class="ctrl-connecting-title">Verbinde mit dem Brett...</h2>
+      <p class="ctrl-connecting-sub">Bitte warten, Verbindung wird hergestellt.</p>
+    </div>
+
+    <!-- JOIN SCREEN -->
+    <div id="ctrl-join" class="ctrl-screen hidden">
+      <div class="ctrl-logo">📱</div>
+      <h1 class="ctrl-title">Bil ve Fethet</h1>
+      
+      <div class="join-form">
+        <div class="form-group">
+          <label class="form-label">Dein Name</label>
+          <input type="text" id="input-name" class="form-input" placeholder="Max Mustermann" maxlength="15" autocomplete="off">
+        </div>
+        
+        <div class="form-group" style="margin-top: 8px;">
+          <label class="form-label">Wähle deine Farbe</label>
+          <div class="color-picker" id="color-picker">
+            <!-- Colors dynamically generated -->
+          </div>
+        </div>
+        
+        <button id="btn-join" class="btn btn-primary join-btn">Spiel Beitreten</button>
+      </div>
+    </div>
+
+    <!-- WAITING SCREEN -->
+    <div id="ctrl-waiting" class="ctrl-screen hidden">
+      <div class="waiting-icon">⏳</div>
+      <h2 class="waiting-title">Warten auf Spielstart</h2>
+      <p class="waiting-sub">Schau auf das Hauptbrett für den Status.</p>
+      
+      <div class="player-card" style="margin-top: 20px;">
+        <div class="player-card-avatar" id="waiting-avatar" style="background: #3b82f6;">?</div>
+        <div class="player-card-info" style="flex:1; text-align: left;">
+          <div class="player-card-name" id="waiting-name">Spieler Name</div>
+          <div class="player-card-status">Verbunden und Bereit</div>
+        </div>
+        <div class="pulse-dots">
+          <div class="pulse-dot"></div><div class="pulse-dot"></div><div class="pulse-dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUESTION SCREEN -->
+    <div id="ctrl-question" class="ctrl-screen hidden">
+      <div class="ctrl-region-banner">
+        Umkämpfte Region: <strong id="ctrl-region-name">Berlin</strong>
+      </div>
+      
+      <div class="ctrl-timer" id="ctrl-timer-container">
+        <div class="ctrl-timer-bar" id="ctrl-timer-bar" style="width: 100%;"></div>
+      </div>
+      
+      <div class="ctrl-q-text" id="ctrl-q-text">Wie lautet die Frage?</div>
+      
+      <!-- Multiple Choice Options -->
+      <div class="mc-options" id="ctrl-mc-container" style="display: none;">
+        <button class="mc-btn" data-index="0"><div class="mc-letter">A</div> <span class="mc-text">Option 1</span></button>
+        <button class="mc-btn" data-index="1"><div class="mc-letter">B</div> <span class="mc-text">Option 2</span></button>
+        <button class="mc-btn" data-index="2"><div class="mc-letter">C</div> <span class="mc-text">Option 3</span></button>
+        <button class="mc-btn" data-index="3"><div class="mc-letter">D</div> <span class="mc-text">Option 4</span></button>
+      </div>
+      
+      <!-- Numeric Input -->
+      <div class="numeric-input-area" id="ctrl-num-container" style="display: none;">
+        <div class="numeric-display" id="num-display"></div>
+        <div class="num-keypad">
+          <button class="num-key" data-val="1">1</button>
+          <button class="num-key" data-val="2">2</button>
+          <button class="num-key" data-val="3">3</button>
+          <button class="num-key" data-val="4">4</button>
+          <button class="num-key" data-val="5">5</button>
+          <button class="num-key" data-val="6">6</button>
+          <button class="num-key" data-val="7">7</button>
+          <button class="num-key" data-val="8">8</button>
+          <button class="num-key" data-val="9">9</button>
+          <button class="num-key key-dot" data-val=".">.</button>
+          <button class="num-key" data-val="0">0</button>
+          <button class="num-key key-del" id="btn-num-del">DEL</button>
+          <button class="num-key key-submit" id="btn-num-submit" disabled>Antwort Senden</button>
+        </div>
+      </div>
+      
+      <div class="ctrl-time-up" id="ctrl-time-up-msg" style="display: none;">Zeit abgelaufen! Warten auf Ergebnis...</div>
+    </div>
+
+    <!-- FEEDBACK SCREEN -->
+    <div id="ctrl-feedback" class="ctrl-screen hidden">
+      <div class="feedback-icon" id="fb-icon">👍</div>
+      <h2 class="feedback-title" id="fb-title">Gut gemacht!</h2>
+      <p class="feedback-subtitle" id="fb-subtitle">Du hast die richtige Antwort gegeben.</p>
+      
+      <div class="feedback-score-gained" id="fb-score" style="display: none;">+0 Pkt</div>
+      <div class="feedback-correct-answer" id="fb-correct-ans" style="display: none; margin-top: 10px;"></div>
+    </div>
+
+    <!-- GAMEOVER SCREEN -->
+    <div id="ctrl-gameover" class="ctrl-screen hidden">
+      <div class="ctrl-gameover-trophy">🏅</div>
+      <h2 class="ctrl-gameover-title">Spiel Beendet</h2>
+      <div class="ctrl-gameover-rank" id="gameover-rank">Dein Rang: #1</div>
+      <div class="ctrl-gameover-score" id="gameover-score">5000 Pkt</div>
+      <p style="color: var(--text-secondary); margin-top: 20px; font-size: 0.85rem;">Schau auf das Hauptbrett für die finale Karte!</p>
+    </div>
+
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="js/controller.js"></script>
+</body>
+</html>
