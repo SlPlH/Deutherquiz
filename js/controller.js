@@ -8,12 +8,12 @@ class ControllerApp {
     this.peer = null;
     this.conn = null;
     this.hostId = new URLSearchParams(window.location.search).get('host');
-    
+
     this.playerInfo = {
       name: '',
       color: ''
     };
-    
+
     this.questionDuration = 0;
     this.timerInterval = null;
     this.currentNumVal = '';
@@ -28,12 +28,12 @@ class ControllerApp {
         feedback: document.getElementById('ctrl-feedback'),
         gameover: document.getElementById('ctrl-gameover')
       },
-      
+
       // Join
       inputName: document.getElementById('input-name'),
       colorPicker: document.getElementById('color-picker'),
       btnJoin: document.getElementById('btn-join'),
-      
+
       // Question
       regionName: document.getElementById('ctrl-region-name'),
       timerBar: document.getElementById('ctrl-timer-bar'),
@@ -46,14 +46,14 @@ class ControllerApp {
       timeUpMsg: document.getElementById('ctrl-time-up-msg'),
       mcBtns: document.querySelectorAll('.mc-btn'),
       numKeys: document.querySelectorAll('.num-key[data-val]'),
-      
+
       // Feedback
       fbIcon: document.getElementById('fb-icon'),
       fbTitle: document.getElementById('fb-title'),
       fbSubtitle: document.getElementById('fb-subtitle'),
       fbScore: document.getElementById('fb-score'),
       fbCorrectAns: document.getElementById('fb-correct-ans'),
-      
+
       // Gameover
       goRank: document.getElementById('gameover-rank'),
       goScore: document.getElementById('gameover-score')
@@ -61,9 +61,9 @@ class ControllerApp {
 
     // Color Palette
     this.colors = [
-      '#ef4444','#f97316','#eab308','#22c55e','#06b6d4',
-      '#3b82f6','#8b5cf6','#ec4899','#14b8a6','#f59e0b',
-      '#84cc16','#6366f1','#d946ef','#0ea5e9','#10b981'
+      '#ef4444', '#f97316', '#eab308', '#22c55e', '#06b6d4',
+      '#3b82f6', '#8b5cf6', '#ec4899', '#14b8a6', '#f59e0b',
+      '#84cc16', '#6366f1', '#d946ef', '#0ea5e9', '#10b981'
     ];
 
     this.init();
@@ -78,14 +78,14 @@ class ControllerApp {
       this.showToast('Keine Host-ID gefunden. Bitte scanne den QR-Code erneut.', 'error');
       return;
     }
-    
+
     // Auto-connect to peer server
     this.peer = new Peer({ debug: 2 });
-    
+
     this.peer.on('open', () => {
       this.connectToHost();
     });
-    
+
     this.peer.on('error', (err) => {
       this.showToast('Fehler: ' + err.type, 'error');
       this.showScreen('join');
@@ -98,7 +98,7 @@ class ControllerApp {
       const btn = document.createElement('button');
       btn.className = 'color-swatch';
       btn.style.background = c;
-      if(i === 0) {
+      if (i === 0) {
         btn.classList.add('selected');
         this.playerInfo.color = c;
       }
@@ -113,15 +113,15 @@ class ControllerApp {
 
   connectToHost() {
     this.conn = this.peer.connect(this.hostId, { reliable: true });
-    
+
     this.conn.on('open', () => {
       this.showScreen('join');
     });
-    
+
     this.conn.on('data', (data) => {
       this.handleMessage(data);
     });
-    
+
     this.conn.on('close', () => {
       this.showToast('Verbindung zum Host verloren!', 'error');
       this.showScreen('connecting');
@@ -129,24 +129,24 @@ class ControllerApp {
   }
 
   handleMessage(msg) {
-    switch(msg.type) {
+    switch (msg.type) {
       case 'state':
-        if(msg.state === 'lobby_wait' || msg.state === 'waiting') {
+        if (msg.state === 'lobby_wait' || msg.state === 'waiting') {
           document.getElementById('waiting-name').textContent = this.playerInfo.name;
           document.getElementById('waiting-avatar').textContent = this.playerInfo.name.charAt(0).toUpperCase();
           document.getElementById('waiting-avatar').style.background = this.playerInfo.color;
           this.showScreen('waiting');
         }
         break;
-        
+
       case 'question':
         this.prepareQuestion(msg.question, msg.region);
         break;
-        
+
       case 'round_result':
         this.showFeedback(msg.result);
         break;
-        
+
       case 'game_over':
         this.els.goRank.textContent = `Dein Rang: #${msg.rank}`;
         this.els.goScore.textContent = `${msg.score} Pkt`;
@@ -163,10 +163,10 @@ class ControllerApp {
         return;
       }
       this.playerInfo.name = name;
-      
+
       this.els.btnJoin.disabled = true;
       this.els.btnJoin.textContent = 'Verbinde...';
-      
+
       this.conn.send({
         type: 'join',
         name: this.playerInfo.name,
@@ -177,7 +177,7 @@ class ControllerApp {
     // Multiple Choice
     this.els.mcBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        if(btn.disabled) return;
+        if (btn.disabled) return;
         this.submitAnswer(btn.dataset.index);
         this.els.mcBtns.forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
@@ -203,7 +203,7 @@ class ControllerApp {
     });
 
     this.els.btnNumSubmit.addEventListener('click', () => {
-      if(!this.currentNumVal) return;
+      if (!this.currentNumVal) return;
       this.submitAnswer(this.currentNumVal);
       this.disableInputs();
     });
@@ -213,11 +213,11 @@ class ControllerApp {
     this.els.regionName.textContent = region;
     this.els.qText.textContent = q.text;
     this.els.timeUpMsg.style.display = 'none';
-    
+
     if (q.type === 'multiple_choice') {
       this.els.mcContainer.style.display = 'grid';
       this.els.numContainer.style.display = 'none';
-      
+
       this.els.mcBtns.forEach((btn, idx) => {
         btn.querySelector('.mc-text').textContent = q.options[idx];
         btn.disabled = false;
@@ -226,10 +226,10 @@ class ControllerApp {
     } else {
       this.els.mcContainer.style.display = 'none';
       this.els.numContainer.style.display = 'flex';
-      
+
       this.currentNumVal = '';
       this.updateNumDisplay();
-      
+
       // Update unit display placeholder if provided
       if (q.unit) {
         this.els.numDisplay.setAttribute('data-placeholder', `... ${q.unit}`);
@@ -238,14 +238,14 @@ class ControllerApp {
       }
       this.els.btnNumSubmit.disabled = true;
     }
-    
+
     this.startTimer(q.duration);
     this.showScreen('question');
   }
 
   updateNumDisplay() {
     this.els.numDisplay.textContent = this.currentNumVal;
-    if(this.currentNumVal) {
+    if (this.currentNumVal) {
       this.els.numDisplay.classList.add('has-value');
       this.els.btnNumSubmit.disabled = false;
     } else {
@@ -272,22 +272,22 @@ class ControllerApp {
     clearInterval(this.timerInterval);
     this.els.timerBar.style.width = '100%';
     this.els.timerBar.classList.remove('warning');
-    
+
     // Force reflow
     void this.els.timerBar.offsetWidth;
-    
+
     this.els.timerBar.style.transition = `width ${durationSec}s linear`;
     this.els.timerBar.style.width = '0%';
-    
+
     const start = Date.now();
     this.timerInterval = setInterval(() => {
       const elapsed = (Date.now() - start) / 1000;
       const remaining = durationSec - elapsed;
-      
+
       if (remaining <= 5) {
         this.els.timerBar.classList.add('warning');
       }
-      
+
       if (remaining <= 0) {
         clearInterval(this.timerInterval);
         this.disableInputs();
@@ -299,25 +299,36 @@ class ControllerApp {
     this.els.fbTitle.className = 'feedback-title ' + res.type;
     this.els.fbScore.style.display = 'inline-block';
     this.els.fbScore.textContent = '+' + res.scoreGained + ' Pkt';
-    
+
+    const expCount = res.expansionGained || 0;
+    const expText = expCount > 0
+      ? ` (+${expCount} Gebiet${expCount > 1 ? 'e' : ''})`
+      : '';
+
     if (res.type === 'won') {
-      this.els.fbIcon.textContent = '🏆';
-      this.els.fbTitle.textContent = 'Gewonnen!';
-      this.els.fbSubtitle.textContent = 'Du warst am schnellsten und hast die Region erobert.';
-    } else if (res.type === 'close') {
       this.els.fbIcon.textContent = '⚡';
+      this.els.fbTitle.textContent = 'Schnellste Antwort!';
+      this.els.fbSubtitle.textContent = `Du warst am schnellsten und gewinnst ${expCount} Gebiet${expCount !== 1 ? 'e' : ''}!`;
+    } else if (res.type === 'close') {
+      this.els.fbIcon.textContent = '✅';
       this.els.fbTitle.textContent = 'Richtig!';
-      this.els.fbSubtitle.textContent = res.winnerName ? `${res.winnerName} war leider schneller.` : 'Leider war jemand anderes schneller.';
+      const winnerMsg = res.winnerName ? `${res.winnerName} war schneller.` : 'Jemand war schneller.';
+      this.els.fbSubtitle.textContent = winnerMsg + (expCount > 0 ? ` Du gewinnst ${expCount} Gebiet${expCount !== 1 ? 'e' : ''}.` : '');
+    } else if (res.type === 'eliminated') {
+      this.els.fbIcon.textContent = '💀';
+      this.els.fbTitle.textContent = 'Eliminiert!';
+      this.els.fbSubtitle.textContent = 'Du hast alle Gebiete verloren.';
+      this.els.fbScore.style.display = 'none';
     } else {
       this.els.fbIcon.textContent = '❌';
       this.els.fbTitle.textContent = 'Falsch!';
       this.els.fbSubtitle.textContent = 'Das war leider nicht richtig.';
       this.els.fbScore.style.display = 'none';
     }
-    
+
     this.els.fbCorrectAns.style.display = 'block';
     this.els.fbCorrectAns.textContent = 'Richtige Antwort: ' + res.correctAnswer;
-    
+
     this.showScreen('feedback');
   }
 
@@ -330,7 +341,7 @@ class ControllerApp {
     this.els.screens[screenId].classList.add('visible');
   }
 
-  showToast(msg, type='info') {
+  showToast(msg, type = 'info') {
     const t = document.createElement('div');
     t.className = `toast toast-${type}`;
     t.textContent = msg;

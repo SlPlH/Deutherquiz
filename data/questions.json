@@ -7,6 +7,163 @@
   },
   "categories": [
     {
+      "id": "emotionen",
+      "name": "Emotionen",
+      "icon": "🎭",
+      "questions": [
+        {
+          "id": "emo_001",
+          "type": "multiple_choice",
+          "text": "Ich mag keine Horrorfilme...",
+          "sound": "emo_001.mp3",
+          "soundText": "Ich mag keine Horrorfilme...",
+          "options": [
+            "aber Komödien.",
+            "sondern Komödien.",
+            "obwohl Komödien.",
+            "weil Komödien."
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "emo_002",
+          "type": "multiple_choice",
+          "text": "Ich gehe selten ins Kino...",
+          "sound": "emo_002.mp3",
+          "soundText": "Ich gehe selten ins Kino...",
+          "options": [
+            "obwohl ich Filme liebe.",
+            "weil ich Filme liebe.",
+            "sondern ich Filme liebe.",
+            "deshalb ich Filme liebe."
+          ],
+          "answer": 0,
+          "duration": 20
+        },
+        {
+          "id": "emo_003",
+          "type": "multiple_choice",
+          "text": "Er war sehr erschrocken...",
+          "sound": "emo_003.mp3",
+          "soundText": "Er war sehr erschrocken...",
+          "options": [
+            "obwohl er mutig ist.",
+            "deshalb er mutig ist.",
+            "sondern er mutig ist.",
+            "weil er mutig ist."
+          ],
+          "answer": 0,
+          "duration": 20
+        },
+        {
+          "id": "emo_004",
+          "type": "multiple_choice",
+          "text": "Die Situation war peinlich...",
+          "sound": "emo_004.mp3",
+          "soundText": "Die Situation war peinlich...",
+          "options": [
+            "trotzdem lachten alle.",
+            "obwohl lachten alle.",
+            "sondern lachten alle.",
+            "weil lachten alle."
+          ],
+          "answer": 0,
+          "duration": 20
+        },
+        {
+          "id": "emo_005",
+          "type": "multiple_choice",
+          "text": "Aylin ist traurig...",
+          "sound": "emo_005.mp3",
+          "soundText": "Aylin ist traurig...",
+          "options": [
+            "sondern sie weint.",
+            "trotzdem lacht sie.",
+            "obwohl sie lacht.",
+            "weil sie lacht."
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "emo_006",
+          "type": "multiple_choice",
+          "text": "Der Film war langweilig...",
+          "sound": "emo_006.mp3",
+          "soundText": "Der Film war langweilig...",
+          "options": [
+            "obwohl alle ihn sahen.",
+            "sondern alle ihn sahen.",
+            "weil alle ihn sahen.",
+            "trotzdem sahen ihn alle."
+          ],
+          "answer": 3,
+          "duration": 20
+        },
+        {
+          "id": "emo_007",
+          "type": "multiple_choice",
+          "text": "Klaus war wütend...",
+          "sound": "emo_007.mp3",
+          "soundText": "Klaus war wütend...",
+          "options": [
+            "sondern er ruhig blieb.",
+            "obwohl er ruhig blieb.",
+            "weil er ruhig blieb.",
+            "deshalb er ruhig blieb."
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "emo_008",
+          "type": "multiple_choice",
+          "text": "Ich bin glücklich...",
+          "sound": "emo_008.mp3",
+          "soundText": "Ich bin glücklich...",
+          "options": [
+            "sondern du traurig bist.",
+            "obwohl du traurig bist.",
+            "weil du traurig bist.",
+            "trotzdem du traurig bist."
+          ],
+          "answer": 1,
+          "duration": 20
+        },
+        {
+          "id": "emo_009",
+          "type": "multiple_choice",
+          "text": "Sie lacht...",
+          "sound": "emo_009.mp3",
+          "soundText": "Sie lacht...",
+          "options": [
+            "obwohl sie traurig ist.",
+            "weil sie traurig ist.",
+            "sondern sie traurig ist.",
+            "deshalb sie traurig ist."
+          ],
+          "answer": 0,
+          "duration": 20
+        },
+        {
+          "id": "emo_010",
+          "type": "multiple_choice",
+          "text": "Er ist überrascht...",
+          "sound": "emo_010.mp3",
+          "soundText": "Er ist überrascht...",
+          "options": [
+            "weil er es wusste.",
+            "sondern er es wusste.",
+            "obwohl er es wusste.",
+            "trotzdem er es wusste."
+          ],
+          "answer": 2,
+          "duration": 20
+        }
+      ]
+    },
+    {
       "id": "grammatik_b1",
       "name": "Grammatik B1",
       "icon": "📝",

@@ -58,6 +58,10 @@ class BoardApp {
       btnNewGame: document.getElementById('btn-new-game')
     };
 
+    this.allQuestionsData = null; // raw JSON
+    this.selectedCategories = []; // category ids chosen in lobby
+    this.currentAudio = null; // for sound playback
+
     this.init();
   }
 
@@ -81,9 +85,15 @@ class BoardApp {
       const res = await fetch('data/questions.json');
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
-      this.questionPool = buildQuestionPool(data);
-      this._allQuestions = [...this.questionPool]; 
+      this.allQuestionsData = data;
+      // Default: load all categories
+      this.selectedCategories = data.categories.map(c => c.id);
+      this.questionPool = buildQuestionPool(data, this.selectedCategories);
+      this._allQuestions = [...this.questionPool];
       console.log(`[BvF] ${this.questionPool.length} Fragen geladen.`);
+
+      // Show category modal
+      this.showCategoryModal();
     } catch(e) {
       console.error('[BvF] Fragen konnten nicht geladen werden:', e);
       this.showToast('Fehler: Fragen nicht geladen!', 'error');
@@ -219,6 +229,67 @@ class BoardApp {
     this.els.btnNextQuestion.addEventListener('click', () => this.advanceToNextRound());
   }
 
+  showCategoryModal() {
+    const categories = getCategories(this.allQuestionsData);
+    const modal = document.createElement('div');
+    modal.id = 'category-modal';
+    modal.innerHTML = `
+      <div class="cat-modal-backdrop"></div>
+      <div class="cat-modal-card">
+        <div class="cat-modal-header">
+          <div class="cat-modal-icon">📚</div>
+          <h2 class="cat-modal-title">Kategori Seçimi</h2>
+          <p class="cat-modal-sub">Hangi kategorilerden soru gelsin?</p>
+        </div>
+        <div class="cat-modal-grid" id="cat-grid">
+          ${categories.map(cat => `
+            <label class="cat-chip selected" data-id="${cat.id}">
+              <input type="checkbox" value="${cat.id}" checked hidden>
+              <span class="cat-chip-icon">${cat.icon}</span>
+              <span class="cat-chip-name">${cat.name}</span>
+              <span class="cat-chip-count">${cat.count} Fragen</span>
+              <span class="cat-chip-check">✓</span>
+            </label>
+          `).join('')}
+        </div>
+        <div class="cat-modal-footer">
+          <span id="cat-selected-count" class="cat-count-text">${categories.length} Kategorie ausgewählt</span>
+          <button id="btn-cat-confirm" class="btn btn-primary cat-confirm-btn">Bestätigen ✓</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    // Toggle selection
+    modal.querySelectorAll('.cat-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const checkbox = chip.querySelector('input');
+        checkbox.checked = !checkbox.checked;
+        chip.classList.toggle('selected', checkbox.checked);
+        this._updateCatCount(modal, categories.length);
+      });
+    });
+
+    document.getElementById('btn-cat-confirm').addEventListener('click', () => {
+      const checked = [...modal.querySelectorAll('input[type=checkbox]:checked')].map(el => el.value);
+      if (checked.length === 0) {
+        this.showToast('Mindestens eine Kategorie auswählen!', 'error');
+        return;
+      }
+      this.selectedCategories = checked;
+      this.questionPool = buildQuestionPool(this.allQuestionsData, checked);
+      this._allQuestions = [...this.questionPool];
+      modal.remove();
+      this.showToast(`${this.questionPool.length} Fragen aus ${checked.length} Kategorie(n) geladen.`, 'info');
+    });
+  }
+
+  _updateCatCount(modal, total) {
+    const checked = modal.querySelectorAll('input:checked').length;
+    const el = document.getElementById('cat-selected-count');
+    if (el) el.textContent = `${checked} von ${total} Kategorie(n) ausgewählt`;
+  }
+
   showScreen(screenName) {
     Object.values(this.els.screens).forEach(s => {
       s.classList.remove('visible');
@@ -315,6 +386,9 @@ class BoardApp {
       this.els.qOptions.style.display = 'none';
     }
 
+    // Play sound if question has one
+    this._playQuestionSound(this.currentQuestion);
+
     // Broadcast
     Object.keys(this.connections).forEach(pid => {
       const conn = this.connections[pid];
@@ -338,6 +412,18 @@ class BoardApp {
     });
 
     this.startTimer(this.currentQuestion.duration);
+  }
+
+  _playQuestionSound(question) {
+    if (this.currentAudio) {
+      this.currentAudio.pause();
+      this.currentAudio = null;
+    }
+    if (question.sound) {
+      const audio = new Audio(`assets/sounds/${question.sound}`);
+      audio.play().catch(e => console.warn('[BvF] Ses çalınamadı:', e));
+      this.currentAudio = audio;
+    }
   }
 
   startTimer(durationSeconds) {
@@ -377,9 +463,15 @@ class BoardApp {
       if (this.players[pid]) this.players[pid].score += scores[pid];
     });
 
-    // Expand logic: sort players by score ascending, so higher scores overwrite lower scores
-    const expandingPlayers = Object.keys(expansions).sort((a, b) => scores[a] - scores[b]);
-    
+    // Expand logic: sort players by expansion count (highest wins = overwrites last)
+    const expandingPlayers = Object.keys(expansions).sort((a, b) => (expansions[a] || 0) - (expansions[b] || 0));
+
+    // Determine fastest correct player for UI
+    const correctSorted = this.roundAnswers
+      .filter(ans => scores[ans.playerId] > 0)
+      .sort((a, b) => (a.timestamp - a.startTime) - (b.timestamp - b.startTime));
+    const fastestPid = correctSorted.length > 0 ? correctSorted[0].playerId : null;
+
     const roundSummary = []; // Collect conquest texts
 
     for (const pid of expandingPlayers) {
@@ -405,31 +497,39 @@ class BoardApp {
       ? this.currentQuestion.options[this.currentQuestion.answer] 
       : this.currentQuestion.answer + (this.currentQuestion.unit ? ' ' + this.currentQuestion.unit : '');
 
-    // Send results
+    // Send results to controllers
     Object.keys(this.connections).forEach(pid => {
       const pScore = scores[pid] || 0;
+      const pExp = expansions[pid] || 0;
       const p = this.players[pid];
       if (!p) return;
-      
+
       let fbType = 'lost';
       if (p.eliminated) fbType = 'eliminated';
-      else if (pScore > 800) fbType = 'won'; // Perfect score
-      else if (pScore > 0) fbType = 'close';
-      
+      else if (pid === fastestPid) fbType = 'won'; // Fastest correct answer
+      else if (pScore > 0) fbType = 'close'; // Correct but not fastest
+
       this.sendToPeer(pid, {
         type: 'round_result',
         result: {
           type: fbType,
           scoreGained: pScore,
+          expansionGained: pExp,
           correctAnswer: correctDisplay,
-          winnerName: "Runde beendet"
+          winnerName: fastestPid && this.players[fastestPid] ? this.players[fastestPid].name : 'Niemand'
         }
       });
     });
 
-    // Update overlay UI
-    this.els.resultWinnerName.textContent = "Runde Beendet!";
-    this.els.resultWinnerName.style.color = 'var(--text-primary)';
+    // Update overlay UI — show fastest correct player
+    if (fastestPid && this.players[fastestPid]) {
+      const fp = this.players[fastestPid];
+      this.els.resultWinnerName.textContent = `⚡ ${fp.name}`;
+      this.els.resultWinnerName.style.color = fp.color;
+    } else {
+      this.els.resultWinnerName.textContent = 'Niemand lag richtig.';
+      this.els.resultWinnerName.style.color = 'var(--text-primary)';
+    }
     
     // Build a summary text for conquests
     if (roundSummary.length > 0) {
