@@ -5,8 +5,9 @@
 
 class BoardApp {
   constructor() {
-    this.peer = null;
-    this.connections = {}; // id -> DataConnection
+    this.hostId = Math.random().toString(36).substr(2, 4).toUpperCase();
+    this.sessionRef = null;
+    this.playersRef = null;
     this.players = {};     // id -> { name, color, score, online, eliminated }
     
     this.mapRenderer = null;
@@ -68,7 +69,7 @@ class BoardApp {
   async init() {
     this.mapRenderer = new MapRenderer('map-container');
     await this.loadQuestions();
-    this.setupPeer();
+    this.setupFirebase();
     this.bindEvents();
     
     // Hide active region badge as it's no longer used
@@ -100,45 +101,71 @@ class BoardApp {
     }
   }
 
-  setupPeer() {
-    const id = 'bvfa-' + Math.random().toString(36).substr(2, 4);
-    const iceServers = [
-      { urls: 'stun:stun.l.google.com:19302' },
-      { urls: 'stun:stun1.l.google.com:19302' },
-      {
-        urls: 'turn:openrelay.metered.ca:80',
-        username: 'openrelayproject',
-        credential: 'openrelayproject'
-      },
-      {
-        urls: 'turn:openrelay.metered.ca:443',
-        username: 'openrelayproject',
-        credential: 'openrelayproject'
-      },
-      {
-        urls: 'turn:openrelay.metered.ca:443?transport=tcp',
-        username: 'openrelayproject',
-        credential: 'openrelayproject'
-      }
-    ];
-    this.peer = new Peer(id, {
-      debug: 2,
-      config: { iceServers }
-    });
-    
-    this.peer.on('open', (id) => {
-      this.els.hostId.textContent = id;
-      this.generateQR(id);
-    });
+  async setupFirebase() {
+    try {
+      await auth.signInAnonymously();
+      
+      this.sessionRef = db.ref('sessions/' + this.hostId);
+      this.playersRef = this.sessionRef.child('players');
 
-    this.peer.on('connection', (conn) => {
-      this.handleConnection(conn);
-    });
+      // Clear old session if exists, set initial state
+      await this.sessionRef.set({
+        state: 'lobby',
+        createdAt: firebase.database.ServerValue.TIMESTAMP
+      });
 
-    this.peer.on('error', (err) => {
-      console.error(err);
-      this.showToast('Verbindungsfehler: ' + err.type, 'error');
-    });
+      // Remove session when host disconnects
+      this.sessionRef.onDisconnect().remove();
+
+      this.els.hostId.textContent = this.hostId;
+      this.generateQR(this.hostId);
+
+      // Listen for players joining/updating
+      this.playersRef.on('value', (snapshot) => {
+        const data = snapshot.val() || {};
+        
+        // Check for new players or changes
+        Object.keys(data).forEach(pid => {
+          const pData = data[pid];
+          if (!this.players[pid]) {
+            // New player joined
+            this.players[pid] = {
+              name: pData.name,
+              color: pData.color,
+              score: 0,
+              online: true,
+              regions: 0,
+              eliminated: false,
+              _lastAnswerTimestamp: 0 // Track processed answers
+            };
+            this.updateLobbyUI();
+          }
+
+          // Handle incoming answers during question state
+          if (this.state === 'question' && pData.answer && pData.answer.timestamp > this.players[pid]._lastAnswerTimestamp && !this.players[pid].eliminated) {
+            this.players[pid]._lastAnswerTimestamp = pData.answer.timestamp;
+            this.roundAnswers.push({
+              playerId: pid,
+              value: pData.answer.value,
+              timestamp: pData.answer.timestamp,
+              startTime: this.currentQuestion.startTime
+            });
+            
+            const activePlayers = Object.values(this.players).filter(p => p.online && !p.eliminated).length;
+            if (this.roundAnswers.length >= activePlayers) {
+              this.endRound();
+            }
+          }
+        });
+
+        // Check for offline players (if they removed their node via onDisconnect)
+        // Actually, we'll let controller handle its own presence or just assume they are online unless deleted
+      });
+
+    } catch (e) {
+      console.error('[Firebase] Error:', e);
+      this.showToast('Verbindungsfehler: ' + e.message, 'error');
+    }
   }
 
   generateQR(id) {
@@ -153,73 +180,6 @@ class BoardApp {
       colorLight: '#ffffff',
       correctLevel: QRCode.CorrectLevel.M
     });
-  }
-
-  handleConnection(conn) {
-    conn.on('open', () => {
-      this.connections[conn.peer] = conn;
-    });
-
-    conn.on('data', (data) => {
-      this.handleMessage(conn.peer, data);
-    });
-
-    conn.on('close', () => {
-      if (this.players[conn.peer]) {
-        this.players[conn.peer].online = false;
-        this.updateLobbyUI();
-      }
-      delete this.connections[conn.peer];
-    });
-  }
-
-  handleMessage(peerId, msg) {
-    switch(msg.type) {
-      case 'join':
-        this.players[peerId] = {
-          name: msg.name,
-          color: msg.color,
-          score: 0,
-          online: true,
-          regions: 0,
-          eliminated: false
-        };
-        this.updateLobbyUI();
-        
-        if (this.state !== 'lobby') {
-          this.sendToPeer(peerId, { type: 'state', state: 'waiting' });
-        } else {
-          this.sendToPeer(peerId, { type: 'state', state: 'lobby_wait' });
-        }
-        break;
-
-      case 'answer':
-        if (this.state === 'question' && !this.players[peerId].eliminated) {
-          this.roundAnswers.push({
-            playerId: peerId,
-            value: msg.value,
-            timestamp: msg.timestamp,
-            startTime: this.currentQuestion.startTime
-          });
-          
-          const activePlayers = Object.values(this.players).filter(p => p.online && !p.eliminated).length;
-          if (this.roundAnswers.length >= activePlayers) {
-            this.endRound();
-          }
-        }
-        break;
-    }
-  }
-
-  sendToAll(data) {
-    Object.values(this.connections).forEach(conn => {
-      if (conn.open) conn.send(data);
-    });
-  }
-
-  sendToPeer(peerId, data) {
-    const conn = this.connections[peerId];
-    if (conn && conn.open) conn.send(data);
   }
 
   updateLobbyUI() {
@@ -350,6 +310,7 @@ class BoardApp {
     this.updateScoreboard();
 
     this.showScreen('game');
+    this.sessionRef.update({ state: 'game' });
     this.startNextRound();
   }
 
@@ -411,27 +372,28 @@ class BoardApp {
     // Play sound if question has one
     this._playQuestionSound(this.currentQuestion);
 
-    // Broadcast
-    Object.keys(this.connections).forEach(pid => {
-      const conn = this.connections[pid];
-      if (conn && conn.open) {
-        if (this.players[pid] && this.players[pid].eliminated) {
-          conn.send({ type: 'round_result', result: { type: 'eliminated' } });
-        } else {
-          conn.send({
-            type: 'question',
-            question: {
-              type: this.currentQuestion.type,
-              text: this.currentQuestion.text,
-              options: this.currentQuestion.options,
-              duration: this.currentQuestion.duration,
-              unit: this.currentQuestion.unit
-            },
-            region: "Alle"
-          });
-        }
+    // Broadcast via Firebase
+    this.sessionRef.update({
+      state: 'question',
+      questionData: {
+        type: this.currentQuestion.type,
+        text: this.currentQuestion.text,
+        options: this.currentQuestion.options || [],
+        duration: this.currentQuestion.duration,
+        unit: this.currentQuestion.unit || null
       }
     });
+
+    // Clear previous feedback and answers
+    const updates = {};
+    Object.keys(this.players).forEach(pid => {
+      updates[`players/${pid}/feedback`] = null;
+      updates[`players/${pid}/answer`] = null;
+      if (this.players[pid].eliminated) {
+        updates[`players/${pid}/feedback`] = { type: 'eliminated' };
+      }
+    });
+    this.sessionRef.update(updates);
 
     this.startTimer(this.currentQuestion.duration);
   }
@@ -519,8 +481,9 @@ class BoardApp {
       ? this.currentQuestion.options[this.currentQuestion.answer] 
       : this.currentQuestion.answer + (this.currentQuestion.unit ? ' ' + this.currentQuestion.unit : '');
 
-    // Send results to controllers
-    Object.keys(this.connections).forEach(pid => {
+    // Send results to controllers via Firebase
+    const updates = { state: 'result' };
+    Object.keys(this.players).forEach(pid => {
       const pScore = scores[pid] || 0;
       const pExp = expansions[pid] || 0;
       const p = this.players[pid];
@@ -531,17 +494,15 @@ class BoardApp {
       else if (pid === fastestPid) fbType = 'won'; // Fastest correct answer
       else if (pScore > 0) fbType = 'close'; // Correct but not fastest
 
-      this.sendToPeer(pid, {
-        type: 'round_result',
-        result: {
-          type: fbType,
-          scoreGained: pScore,
-          expansionGained: pExp,
-          correctAnswer: correctDisplay,
-          winnerName: fastestPid && this.players[fastestPid] ? this.players[fastestPid].name : 'Niemand'
-        }
-      });
+      updates[`players/${pid}/feedback`] = {
+        type: fbType,
+        scoreGained: pScore,
+        expansionGained: pExp,
+        correctAnswer: correctDisplay,
+        winnerName: fastestPid && this.players[fastestPid] ? this.players[fastestPid].name : 'Niemand'
+      };
     });
+    this.sessionRef.update(updates);
 
     // Update overlay UI — show fastest correct player
     if (fastestPid && this.players[fastestPid]) {
@@ -620,15 +581,18 @@ class BoardApp {
     this.state = 'gameover';
     const sorted = Object.values(this.players).sort((a, b) => b.regions - a.regions || b.score - a.score);
     
-    Object.keys(this.connections).forEach(pid => {
+    this.sessionRef.update({ state: 'gameover' });
+
+    const updates = {};
+    Object.keys(this.players).forEach(pid => {
       const p = this.players[pid];
       const rank = sorted.findIndex(sp => sp === p) + 1;
-      this.sendToPeer(pid, {
-        type: 'game_over',
+      updates[`players/${pid}/gameover`] = {
         rank: rank,
         score: p.score
-      });
+      };
     });
+    this.sessionRef.update(updates);
 
     this.els.finalPodium.innerHTML = '';
     sorted.slice(0, 3).forEach((p, idx) => {

@@ -5,8 +5,10 @@
 
 class ControllerApp {
   constructor() {
-    this.peer = null;
-    this.conn = null;
+    this.playerId = 'player-' + Math.random().toString(36).substr(2, 9);
+    this.hostId = new URLSearchParams(window.location.search).get('host');
+    this.sessionRef = null;
+    this.playerRef = null;
     this.hostId = new URLSearchParams(window.location.search).get('host');
 
     this.playerInfo = {
@@ -79,36 +81,7 @@ class ControllerApp {
       return;
     }
 
-    // Auto-connect to peer server
-    const iceServers = [
-      { urls: 'stun:stun.l.google.com:19302' },
-      { urls: 'stun:stun1.l.google.com:19302' },
-      {
-        urls: 'turn:openrelay.metered.ca:80',
-        username: 'openrelayproject',
-        credential: 'openrelayproject'
-      },
-      {
-        urls: 'turn:openrelay.metered.ca:443',
-        username: 'openrelayproject',
-        credential: 'openrelayproject'
-      },
-      {
-        urls: 'turn:openrelay.metered.ca:443?transport=tcp',
-        username: 'openrelayproject',
-        credential: 'openrelayproject'
-      }
-    ];
-    this.peer = new Peer({ debug: 2, config: { iceServers } });
-
-    this.peer.on('open', () => {
-      this.connectToHost();
-    });
-
-    this.peer.on('error', (err) => {
-      this.showToast('Fehler: ' + err.type, 'error');
-      this.showScreen('join');
-    });
+    this.setupFirebase();
   }
 
   renderColors() {
@@ -130,47 +103,64 @@ class ControllerApp {
     });
   }
 
-  connectToHost() {
-    this.conn = this.peer.connect(this.hostId, { reliable: true });
+  async setupFirebase() {
+    try {
+      await auth.signInAnonymously();
+      
+      this.sessionRef = db.ref('sessions/' + this.hostId);
+      this.playerRef = this.sessionRef.child('players/' + this.playerId);
 
-    this.conn.on('open', () => {
+      // Verify session exists
+      const snap = await this.sessionRef.child('state').once('value');
+      if (!snap.exists()) {
+        throw new Error('Host nicht gefunden.');
+      }
+
       this.showScreen('join');
-    });
 
-    this.conn.on('data', (data) => {
-      this.handleMessage(data);
-    });
-
-    this.conn.on('close', () => {
-      this.showToast('Verbindung zum Host verloren!', 'error');
-      this.showScreen('connecting');
-    });
-  }
-
-  handleMessage(msg) {
-    switch (msg.type) {
-      case 'state':
-        if (msg.state === 'lobby_wait' || msg.state === 'waiting') {
-          document.getElementById('waiting-name').textContent = this.playerInfo.name;
-          document.getElementById('waiting-avatar').textContent = this.playerInfo.name.charAt(0).toUpperCase();
-          document.getElementById('waiting-avatar').style.background = this.playerInfo.color;
-          this.showScreen('waiting');
+      // Listen for game state changes
+      this.sessionRef.child('state').on('value', s => {
+        const state = s.val();
+        if (state === 'lobby' || state === 'waiting' || state === 'lobby_wait') {
+          if (this.playerInfo.name) {
+            document.getElementById('waiting-name').textContent = this.playerInfo.name;
+            document.getElementById('waiting-avatar').textContent = this.playerInfo.name.charAt(0).toUpperCase();
+            document.getElementById('waiting-avatar').style.background = this.playerInfo.color;
+            this.showScreen('waiting');
+          }
         }
-        break;
+      });
 
-      case 'question':
-        this.prepareQuestion(msg.question, msg.region);
-        break;
+      // Listen for new questions
+      this.sessionRef.child('questionData').on('value', s => {
+        const qData = s.val();
+        if (qData) {
+          this.prepareQuestion(qData, "Alle"); // region label is legacy
+        }
+      });
 
-      case 'round_result':
-        this.showFeedback(msg.result);
-        break;
+      // Listen for personal feedback
+      this.playerRef.child('feedback').on('value', s => {
+        const fb = s.val();
+        if (fb) {
+          this.showFeedback(fb);
+        }
+      });
 
-      case 'game_over':
-        this.els.goRank.textContent = `Dein Rang: #${msg.rank}`;
-        this.els.goScore.textContent = `${msg.score} Pkt`;
-        this.showScreen('gameover');
-        break;
+      // Listen for game over stats
+      this.playerRef.child('gameover').on('value', s => {
+        const go = s.val();
+        if (go) {
+          this.els.goRank.textContent = `Dein Rang: #${go.rank}`;
+          this.els.goScore.textContent = `${go.score} Pkt`;
+          this.showScreen('gameover');
+        }
+      });
+
+    } catch (e) {
+      this.showToast(e.message, 'error');
+      this.showScreen('connecting');
+      this.els.screens.connecting.innerHTML = '<h2>Fehler beim Verbinden</h2><p>Bitte QR-Code neu scannen.</p>';
     }
   }
 
@@ -184,13 +174,16 @@ class ControllerApp {
       this.playerInfo.name = name;
 
       this.els.btnJoin.disabled = true;
-      this.els.btnJoin.textContent = 'Verbinde...';
+      this.els.btnJoin.textContent = 'Verbunden!';
 
-      this.conn.send({
-        type: 'join',
+      // Join game in Firebase
+      this.playerRef.set({
         name: this.playerInfo.name,
-        color: this.playerInfo.color
+        color: this.playerInfo.color,
+        online: true
       });
+
+      this.playerRef.child('online').onDisconnect().set(false);
     });
 
     // Multiple Choice
@@ -274,10 +267,10 @@ class ControllerApp {
   }
 
   submitAnswer(val) {
-    this.conn.send({
-      type: 'answer',
+    if (!this.playerRef) return;
+    this.playerRef.child('answer').set({
       value: val,
-      timestamp: Date.now()
+      timestamp: firebase.database.ServerValue.TIMESTAMP
     });
   }
 
