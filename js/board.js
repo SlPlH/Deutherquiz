@@ -37,6 +37,7 @@ class BoardApp {
       regionBadge: document.getElementById('active-region-badge'), // Hide this
       qCategoryIcon: document.getElementById('q-category-icon'),
       qCategoryName: document.getElementById('q-category-name'),
+      qCategoryDescription: document.getElementById('q-category-description'),
       qTypeBadge: document.getElementById('q-type-badge'),
       qText: document.getElementById('q-text'),
       qOptions: document.getElementById('q-options'),
@@ -228,7 +229,10 @@ class BoardApp {
             <label class="cat-chip selected" data-id="${cat.id}">
               <input type="checkbox" value="${cat.id}" checked hidden>
               <span class="cat-chip-icon">${cat.icon}</span>
-              <span class="cat-chip-name">${cat.name}</span>
+              <div class="cat-chip-info">
+                <span class="cat-chip-name">${cat.name}</span>
+                ${cat.description ? `<span class="cat-chip-description">${cat.description}</span>` : ''}
+              </div>
               <span class="cat-chip-count">${cat.count} Fragen</span>
               <span class="cat-chip-check">✓</span>
             </label>
@@ -347,6 +351,10 @@ class BoardApp {
     
     this.els.qCategoryIcon.textContent = this.currentQuestion.categoryIcon;
     this.els.qCategoryName.textContent = this.currentQuestion.categoryName;
+    this.els.qCategoryDescription.textContent = this.currentQuestion.categoryDescription || "";
+    
+    // Hide description if empty to save space
+    this.els.qCategoryDescription.style.display = this.currentQuestion.categoryDescription ? 'block' : 'none';
     
     this.els.qTypeBadge.className = 'q-type-badge ' + (this.currentQuestion.type === 'multiple_choice' ? 'q-type-mc' : 'q-type-num');
     this.els.qTypeBadge.textContent = this.currentQuestion.type === 'multiple_choice' ? 'Multiple Choice' : 'Zahl eingeben';

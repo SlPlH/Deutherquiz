@@ -116,7 +116,7 @@ function buildQuestionPool(questionsData, selectedCategoryIds) {
       if (!selectedCategoryIds.includes(cat.id)) continue;
     }
     for (const q of cat.questions) {
-      all.push({ ...q, categoryName: cat.name, categoryIcon: cat.icon });
+      all.push({ ...q, categoryName: cat.name, categoryIcon: cat.icon, categoryDescription: cat.description || "" });
     }
   }
   return shuffle(all);
@@ -127,6 +127,7 @@ function getCategories(questionsData) {
     id: cat.id,
     name: cat.name,
     icon: cat.icon,
+    description: cat.description || "",
     count: cat.questions.length
   }));
 }

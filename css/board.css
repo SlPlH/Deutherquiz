@@ -315,6 +315,17 @@
   letter-spacing: 0.1em;
   color: var(--text-muted);
 }
+.q-category-description {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  background: rgba(255,255,255,0.03);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border-left: 3px solid var(--accent);
+  font-style: italic;
+}
 
 .q-type-badge {
   margin-left: auto;
@@ -716,11 +727,22 @@
   flex-shrink: 0;
 }
 
+.cat-chip-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+}
 .cat-chip-name {
   font-size: 1rem;
   font-weight: 700;
   color: var(--text-primary);
-  flex: 1;
+}
+.cat-chip-description {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  line-height: 1.3;
 }
 
 .cat-chip-count {
