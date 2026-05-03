@@ -13,15 +13,15 @@ Following its initial release, this project reached 97 downloads within the firs
 - **Score-Based Conquest**: Players earn points based on the accuracy and speed of their responses. Territorial expansion is automated based on performance thresholds (e.g., 800+ points grants 3 cities, 500+ points grants 2 cities).
 - **Competitive Mechanics**: If multiple players attempt to expand into the same region simultaneously, the player with the highest score for that round successfully captures the territory.
 - **Adjustable Timing**: The host can configure question durations from the setup screen before beginning a session.
-- **100% Client-Side Architecture**: No database or server installation is required. Connections are established peer-to-peer (P2P) using PeerJS, enabling free hosting on platforms such as GitHub Pages.
+- **Cloud-Synced Architecture**: Connections and game state are managed via Firebase Realtime Database, ensuring perfect stability across different networks (e.g., school Wi-Fi and mobile data) without complex server installations.
 
 ---
 ## Security and Privacy
-This project operates entirely on the client side:
-- No API keys are required.
-- No backend database is maintained.
-- Peer-to-peer communication is handled via PeerJS public cloud servers.
-- The project is safe to host in public repositories as it contains no sensitive credentials or server-side vulnerabilities.
+This project uses Firebase for real-time networking:
+- **Public API Keys**: The Firebase configuration and API keys included in the codebase are public by design. They only identify the project and do not grant administrative access.
+- **Anonymous Authentication**: The database is secured using Firebase Anonymous Authentication (`auth != null`). Only players actively using the application can read or write to the game sessions.
+- **Zero Financial Risk**: The project runs entirely on Firebase's free "Spark" plan. There are no stored credit cards, and the security rules prevent malicious bots from spamming the database.
+- **No Personal Data**: The game only stores temporary session data (like player names and scores) which is overwritten or deleted automatically. No sensitive user information is ever collected or stored.
 
 ---
 
