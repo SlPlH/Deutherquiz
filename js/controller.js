@@ -121,6 +121,18 @@ class ControllerApp {
       // Listen for game state changes
       this.sessionRef.child('state').on('value', s => {
         const state = s.val();
+
+        if (state === null) {
+          // Host closed the session, disconnect to free up concurrent connections
+          this.showScreen('connecting');
+          this.els.screens.connecting.innerHTML = '<h2>Spiel beendet</h2><p>Host hat die Sitzung geschlossen.</p>';
+          if (this.playerRef) {
+            this.playerRef.child('online').onDisconnect().cancel();
+          }
+          firebase.database().goOffline();
+          return;
+        }
+
         if (state === 'lobby' || state === 'waiting' || state === 'lobby_wait') {
           if (this.playerInfo.name) {
             document.getElementById('waiting-name').textContent = this.playerInfo.name;
